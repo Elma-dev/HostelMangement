@@ -4,6 +4,8 @@ import com.pfe.hostelmangement.enums.RoleEnum;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -20,4 +22,6 @@ public class UserEntity {
     private String fullName;
     @Enumerated(EnumType.STRING)
     private RoleEnum role;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<BlogEntity> blogs;
 }

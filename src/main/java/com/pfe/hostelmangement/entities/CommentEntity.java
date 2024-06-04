@@ -2,23 +2,20 @@ package com.pfe.hostelmangement.entities;
 
 import jakarta.persistence.*;
 
-import java.util.List;
-
 @Entity
-public class BlogEntity {
+public class CommentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String title;
     private String content;
+
+    @ManyToOne
+    @JoinColumn(name = "blog_id")
+    private BlogEntity blog;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity user;
-
-    @OneToMany(mappedBy = "blog", cascade = CascadeType.ALL)
-    private List<CommentEntity> comments;
-
 }

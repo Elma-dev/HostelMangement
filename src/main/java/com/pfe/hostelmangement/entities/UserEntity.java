@@ -16,6 +16,7 @@ import lombok.*;
 public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    private Long id;
     private String username;
     private String password;
     private String fullName;

@@ -1,4 +1,7 @@
 package com.pfe.hostelmangement.repositories;
 
-public interface HotelRepository {
+import com.pfe.hostelmangement.entities.HotelEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface HotelRepository extends JpaRepository<HotelEntity, Long> {
 }

@@ -1,6 +1,5 @@
 package com.pfe.hostelmangement.dtos;
 
-import jakarta.persistence.ManyToOne;
 import lombok.*;
 
 import java.sql.Date;

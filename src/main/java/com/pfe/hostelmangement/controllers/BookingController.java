@@ -25,7 +25,7 @@ public class BookingController {
         return new ResponseEntity<>(bookingServices.userBookings(userId),HttpStatus.OK);
     }
     @GetMapping("/delete/{id}")
-    public  ResponseEntity<Boolean> delete(Long id){
+    public  ResponseEntity<Boolean> delete(@PathVariable Long id){
         bookingServices.delete(id);
         return new ResponseEntity<Boolean>(true,HttpStatus.OK);
     }

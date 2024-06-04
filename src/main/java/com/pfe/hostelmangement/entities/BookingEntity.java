@@ -16,6 +16,7 @@ public class BookingEntity {
     private String destination;
     private Date startDate;
     private Date endDate;
+    private boolean isPaid;
     @ManyToOne
     private UserEntity user;
     @OneToMany

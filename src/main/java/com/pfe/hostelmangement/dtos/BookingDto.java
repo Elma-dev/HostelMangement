@@ -17,6 +17,7 @@ public class BookingDto {
     private String destination;
     private Date startDate;
     private Date endDate;
+    private boolean isPaid;
     UserDto user;
     List<HotelDto> hotels;
     List<RestaurantDto> restaurants;

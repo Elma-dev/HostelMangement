@@ -13,28 +13,25 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @SpringBootApplication
 public class HostelMangementApplication {
 
-    @Autowired
-    BCryptPasswordEncoder passwordEncoder;
-
     public static void main(String[] args) {
         SpringApplication.run(HostelMangementApplication.class, args);
     }
 
 
-    @Bean
-    CommandLineRunner commandLineRunner(UserRepository userRepository) {
-        return args -> {
-
-            UserEntity user = UserEntity.builder()
-                    .username("user")
-                    .password(passwordEncoder.encode("user"))
-                    .fullName("adam doe")
-                    .Role(RoleEnum.ADMIN)
-                    .build();
-
-            userRepository.save(user);
-
-        };
-    }
+//    @Bean
+//    CommandLineRunner commandLineRunner(UserRepository userRepository) {
+//        return args -> {
+//
+//            UserEntity user = UserEntity.builder()
+//                    .username("user")
+//                    .password(passwordEncoder.encode("user"))
+//                    .fullName("adam doe")
+//                    .Role(RoleEnum.ADMIN)
+//                    .build();
+//
+//            userRepository.save(user);
+//
+//        };
+//    }
 
 }

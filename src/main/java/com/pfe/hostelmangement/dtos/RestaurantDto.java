@@ -1,5 +1,12 @@
 package com.pfe.hostelmangement.dtos;
 
+import lombok.*;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@Builder
 public class RestaurantDto {
 
     private Long id;

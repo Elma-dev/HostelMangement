@@ -1,13 +1,16 @@
 package com.pfe.hostelmangement.dtos;
 
 import com.pfe.hostelmangement.enums.RoleEnum;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
-@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 @Builder
 public class UserDto {
     private Long id;
+
     private String username;
     private String password;
     private String fullName;

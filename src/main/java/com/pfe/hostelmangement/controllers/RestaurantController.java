@@ -4,6 +4,8 @@ package com.pfe.hostelmangement.controllers;
 import com.pfe.hostelmangement.dtos.RestaurantDto;
 import com.pfe.hostelmangement.services.imp.RestaurantServicesImpl;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,25 +16,26 @@ import java.util.List;
 public class RestaurantController {
     private RestaurantServicesImpl restaurantServices;
     @GetMapping("/all")
-    public List<RestaurantDto> allRestaurants(){
-        return restaurantServices.findAll();
+    public ResponseEntity<List<RestaurantDto>> allRestaurants(){
+        return ResponseEntity.ok(restaurantServices.findAll());
     }
 
     @GetMapping("/{id}")
-    public RestaurantDto findById(@PathVariable Long id){
-        return restaurantServices.findById(id);
+    public ResponseEntity<RestaurantDto> findById(@PathVariable Long id){
+        return new ResponseEntity<>(restaurantServices.findById(id), HttpStatus.OK);
     }
     @PostMapping("/save")
-    public RestaurantDto save(@RequestBody RestaurantDto restaurantDto){
-        return restaurantServices.save(restaurantDto);
+    public ResponseEntity<RestaurantDto> save(@RequestBody RestaurantDto restaurantDto){
+        return new ResponseEntity<>(restaurantServices.save(restaurantDto),HttpStatus.OK);
     }
     @PutMapping("/update")
-    public RestaurantDto update(@RequestBody RestaurantDto restaurantDto){
-        return restaurantServices.save(restaurantDto);
+    public ResponseEntity<RestaurantDto> update(@RequestBody RestaurantDto restaurantDto){
+        return new ResponseEntity<>(restaurantServices.save(restaurantDto),HttpStatus.OK);
     }
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable Long id){
+    public ResponseEntity<Boolean> delete(@PathVariable Long id){
         restaurantServices.delete(id);
+        return new ResponseEntity<>(true,HttpStatus.OK);
     }
 
 

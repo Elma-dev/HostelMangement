@@ -1,5 +1,6 @@
 package com.pfe.hostelmangement.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,8 +18,8 @@ public class BookingEntity {
     private Date endDate;
     @ManyToOne
     private UserEntity user;
-    @ManyToMany
-    private List<HotelEntity> hotel;
-    @ManyToMany
-    private List<RestaurantEntity> restaurant;
+    @OneToMany
+    private List<HotelEntity> hotels;
+    @OneToMany
+    private List<RestaurantEntity> restaurants;
 }

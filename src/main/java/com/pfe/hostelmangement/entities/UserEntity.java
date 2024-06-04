@@ -10,6 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+
 public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -18,5 +19,5 @@ public class UserEntity {
     private String password;
     private String fullName;
     @Enumerated(EnumType.STRING)
-    private RoleEnum Role;
+    private RoleEnum role;
 }

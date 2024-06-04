@@ -1,6 +1,5 @@
 package com.pfe.hostelmangement.dtos;
 
-import jakarta.persistence.ManyToOne;
 import lombok.*;
 
 import java.sql.Date;
@@ -17,6 +16,7 @@ public class BookingDto {
     private String destination;
     private Date startDate;
     private Date endDate;
+    private boolean isPaid;
     UserDto user;
     List<HotelDto> hotels;
     List<RestaurantDto> restaurants;

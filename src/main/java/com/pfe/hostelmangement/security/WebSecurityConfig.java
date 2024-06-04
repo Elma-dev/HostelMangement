@@ -33,6 +33,9 @@ public class WebSecurityConfig {
           .formLogin(Customizer.withDefaults())
           .authorizeHttpRequests(ar->ar.requestMatchers("/test/**").hasRole("ADMIN"))
           .authorizeHttpRequests(ar->ar.requestMatchers("/web/**").permitAll())
+          .authorizeHttpRequests(ar->ar.requestMatchers("/booking/**").permitAll())
+          .authorizeHttpRequests(ar->ar.requestMatchers("/hotel/**").permitAll())
+          .authorizeHttpRequests(ar->ar.requestMatchers("/restaurant/**").permitAll())
           .authorizeHttpRequests(ar->ar.anyRequest().authenticated())
           .build();
   }

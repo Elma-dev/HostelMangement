@@ -1,5 +1,6 @@
 package com.pfe.hostelmangement.entities;
 
+import com.pfe.hostelmangement.enums.RoleEnum;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,4 +19,5 @@ public class UserEntity {
     private String username;
     private String password;
     private String fullName;
+    private RoleEnum Role;
 }

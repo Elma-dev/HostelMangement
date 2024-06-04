@@ -12,6 +12,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+
 public class HotelEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

@@ -21,7 +21,6 @@ public class HotelController {
     }
     @GetMapping("/{id}")
     public ResponseEntity<HotelDto> findById(@PathVariable Long id){
-
         return new ResponseEntity<>(hotelService.findById(id),HttpStatus.OK);
     }
     @PostMapping("/save")

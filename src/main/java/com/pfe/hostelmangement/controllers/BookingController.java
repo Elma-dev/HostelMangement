@@ -18,11 +18,11 @@ public class BookingController {
     @GetMapping("/all")
     public ResponseEntity<List<BookingDto>> allBookings(){
 
-        return new ResponseEntity<List<BookingDto>>(bookingServices.findAll(),HttpStatus.OK);
+        return new ResponseEntity<>(bookingServices.findAll(),HttpStatus.OK);
     }
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<BookingDto>> userBookings(@PathVariable Long userId){
-        return new ResponseEntity<List<BookingDto>>(bookingServices.userBookings(userId),HttpStatus.OK);
+        return new ResponseEntity<>(bookingServices.userBookings(userId),HttpStatus.OK);
     }
     @GetMapping("/delete/{id}")
     public  ResponseEntity<Boolean> delete(Long id){

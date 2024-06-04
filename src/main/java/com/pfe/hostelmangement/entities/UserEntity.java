@@ -1,10 +1,7 @@
 package com.pfe.hostelmangement.entities;
 
 import com.pfe.hostelmangement.enums.RoleEnum;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -13,6 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+
 public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -20,5 +18,6 @@ public class UserEntity {
     private String username;
     private String password;
     private String fullName;
-    private RoleEnum Role;
+    @Enumerated(EnumType.STRING)
+    private RoleEnum role;
 }

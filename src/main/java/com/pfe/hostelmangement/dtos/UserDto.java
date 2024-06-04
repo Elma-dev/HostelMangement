@@ -1,14 +1,11 @@
 package com.pfe.hostelmangement.dtos;
 
-import jakarta.persistence.Enumerated;
-import lombok.Builder;
+import com.pfe.hostelmangement.enums.RoleEnum;
 
-@Builder
 public class UserDto {
-
-    private int id;
-    private String fullName;
+    private Long id;
     private String username;
-    @Enumerated()
-    private String role;
+    private String password;
+    private String fullName;
+    private RoleEnum Role;
 }

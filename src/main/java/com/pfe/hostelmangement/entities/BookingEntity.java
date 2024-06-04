@@ -1,22 +1,24 @@
 package com.pfe.hostelmangement.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor @Builder
-public class BookEntity {
+public class BookingEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
     private String destination;
     private Date startDate;
     private Date endDate;
-
-
+    @ManyToOne
+    private UserEntity user;
+    @ManyToMany
+    private List<HotelEntity> hotel;
+    @ManyToMany
+    private List<RestaurantEntity> restaurant;
 }

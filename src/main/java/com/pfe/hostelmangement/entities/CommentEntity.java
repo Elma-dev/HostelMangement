@@ -1,8 +1,14 @@
 package com.pfe.hostelmangement.entities;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class CommentEntity {
 
     @Id

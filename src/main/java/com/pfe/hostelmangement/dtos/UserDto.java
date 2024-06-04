@@ -1,7 +1,10 @@
 package com.pfe.hostelmangement.dtos;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.pfe.hostelmangement.enums.RoleEnum;
 import lombok.*;
+
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,4 +18,6 @@ public class UserDto {
     private String password;
     private String fullName;
     private RoleEnum Role;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private List<BlogDto> blogs;
 }

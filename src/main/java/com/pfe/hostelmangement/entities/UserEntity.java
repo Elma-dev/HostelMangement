@@ -1,5 +1,7 @@
 package com.pfe.hostelmangement.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.pfe.hostelmangement.enums.RoleEnum;
 import jakarta.persistence.*;
 import lombok.*;

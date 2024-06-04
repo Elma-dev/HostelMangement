@@ -22,7 +22,7 @@ public class BlogController {
         return new ResponseEntity<>(blogService.findAll(),HttpStatus.OK);
     }
     @GetMapping("/delete/{id}")
-    public  ResponseEntity<Boolean> delete(Long id){
+    public  ResponseEntity<Boolean> delete(@PathVariable Long id){
         blogService.delete(id);
         return new ResponseEntity<Boolean>(true,HttpStatus.OK);
     }

@@ -22,7 +22,7 @@ public class CommentController {
         return new ResponseEntity<>(commentService.findAll(),HttpStatus.OK);
     }
     @GetMapping("/delete/{id}")
-    public  ResponseEntity<Boolean> delete(Long id){
+    public  ResponseEntity<Boolean> delete(@PathVariable Long id){
         commentService.delete(id);
         return new ResponseEntity<Boolean>(true,HttpStatus.OK);
     }
@@ -34,6 +34,4 @@ public class CommentController {
     public ResponseEntity<CommentDto> update(@RequestBody CommentDto commentDto){
         return new ResponseEntity<>(commentService.save(commentDto),HttpStatus.OK);
     }
-
-
 }

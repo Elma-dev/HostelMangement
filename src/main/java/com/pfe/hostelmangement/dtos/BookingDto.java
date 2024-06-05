@@ -1,5 +1,6 @@
 package com.pfe.hostelmangement.dtos;
 
+import com.pfe.hostelmangement.entities.ActivityEntity;
 import lombok.*;
 
 import java.sql.Date;
@@ -16,8 +17,14 @@ public class BookingDto {
     private String destination;
     private Date startDate;
     private Date endDate;
+    private int numberOfPersons;
+    private String message;
     private boolean isPaid;
-    UserDto user;
-    List<HotelDto> hotels;
-    List<RestaurantDto> restaurants;
+    private float totalPrice;
+    private UserDto user;
+    private List<HotelDto> hotels;
+    private List<GuideDto> guides;
+    private List<RestaurantDto> restaurants;
+    private List<ActivityDto> activities;
+
 }

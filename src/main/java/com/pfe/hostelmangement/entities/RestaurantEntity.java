@@ -22,4 +22,6 @@ public class RestaurantEntity {
     private String name;
     private String location;
     private String cuisine;
+    private float price;
+    private float rating;
 }

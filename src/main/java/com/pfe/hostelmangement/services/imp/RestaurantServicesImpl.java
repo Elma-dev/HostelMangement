@@ -25,10 +25,7 @@ public class RestaurantServicesImpl implements RestaurantServices {
     @Override
     public RestaurantDto findById(Long id) {
         Optional<RestaurantEntity> restaurant = restaurantRepository.findById(id);
-        if (restaurant.isPresent()) {
-            return ObjectMapper.map(restaurant, RestaurantDto.class);
-        }
-        return null;
+        return restaurant.map(restaurantEntity -> ObjectMapper.map(restaurantEntity, RestaurantDto.class)).orElse(null);
     }
 
     @Override

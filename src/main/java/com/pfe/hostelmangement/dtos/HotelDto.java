@@ -12,4 +12,7 @@ public class HotelDto {
     private String name;
     private String location;
     private int rating;
+    private String description;
+    private String image;
+    private float price;
 }

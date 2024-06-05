@@ -16,11 +16,19 @@ public class BookingEntity {
     private String destination;
     private Date startDate;
     private Date endDate;
+    private int numberOfPersons;
+    private String message;
     private boolean isPaid;
+    private float totalPrice;
+
     @ManyToOne
     private UserEntity user;
     @OneToMany
     private List<HotelEntity> hotels;
     @OneToMany
     private List<RestaurantEntity> restaurants;
+    @OneToMany
+    private List<ActivityEntity> activities;
+    @OneToMany
+    private List<GuideEntity> guide;
 }

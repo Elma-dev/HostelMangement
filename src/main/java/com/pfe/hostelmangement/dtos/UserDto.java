@@ -13,10 +13,10 @@ import java.util.List;
 @Builder
 public class UserDto {
     private Long id;
-
     private String username;
     private String password;
     private String fullName;
+    private String email;
     private RoleEnum Role;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<BlogDto> blogs;

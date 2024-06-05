@@ -34,6 +34,10 @@ public class ActivityController {
     public ResponseEntity<ActivityDto> update(@RequestBody  ActivityDto activityDto){
         return new ResponseEntity<>(activityServices.save(activityDto),HttpStatus.OK);
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<ActivityDto> findById(@PathVariable Long id){
+        return new ResponseEntity<>(activityServices.findById(id),HttpStatus.OK);
+    }
 
 
 }

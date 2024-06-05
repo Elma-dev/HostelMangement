@@ -8,6 +8,8 @@ import com.pfe.hostelmangement.services.HotelServices;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,7 +21,14 @@ public class HotelServicesImpl implements HotelServices {
 
     @Override
     public HotelDto save(HotelDto hotel) {
+        byte[] decodedImage = null;
+        if (hotel.getImage() != null) {
+            decodedImage = Base64.getDecoder().decode(hotel.getImage());
+        }
+        hotel.setImage(null);
+
         HotelEntity hotelEntity = ObjectMapper.map(hotel, HotelEntity.class);
+        hotelEntity.setImage(decodedImage);
         HotelEntity hotelSaved = hotelRepository.save(hotelEntity);
         return ObjectMapper.map(hotelSaved, HotelDto.class);
     }
@@ -27,16 +36,31 @@ public class HotelServicesImpl implements HotelServices {
     @Override
     public List<HotelDto> findAll() {
         List<HotelEntity> all = hotelRepository.findAll();
-        return ObjectMapper.mapAll(all, HotelDto.class);
+        return all.stream().map(this::encodeAndMap).toList();
+    }
+    private HotelDto encodeAndMap(HotelEntity entity){
+        String encodedMainImage = null;
+
+        if (entity.getImage() != null) {
+            encodedMainImage = Base64.getEncoder().encodeToString(entity.getImage());
+        }
+
+
+        entity.setImage(null);
+
+        HotelDto dto = ObjectMapper.map(entity, HotelDto.class);
+        dto.setImage(encodedMainImage);
+        return dto;
+
     }
 
     @Override
     public HotelDto findById(Long id) {
         Optional<HotelEntity> hotel = hotelRepository.findById(id);
-        if (!hotel.isPresent()) {
+        if (hotel.isEmpty()) {
             return null;
         }
-        return ObjectMapper.map(hotel, HotelDto.class);
+        return encodeAndMap(hotel.get());
     }
 
     @Override

@@ -8,4 +8,6 @@ public interface ActivityServices {
     ActivityDto save(ActivityDto activityDto);
     List<ActivityDto> findAll();
     void delete(Long id);
+
+    ActivityDto findById(Long id);
 }

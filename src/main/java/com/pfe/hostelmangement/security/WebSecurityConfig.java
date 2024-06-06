@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -40,6 +39,7 @@ public class WebSecurityConfig {
             .authorizeHttpRequests(ar->ar.requestMatchers("/activity/**").permitAll())
             .authorizeHttpRequests(ar->ar.requestMatchers("/hotel").permitAll())
             .authorizeHttpRequests(ar->ar.requestMatchers("/restaurant/**").permitAll())
+            .authorizeHttpRequests(ar->ar.requestMatchers("/login").permitAll())
             .authorizeHttpRequests(ar->ar.anyRequest().authenticated())
 
             .cors(cors -> cors.configurationSource(request -> {

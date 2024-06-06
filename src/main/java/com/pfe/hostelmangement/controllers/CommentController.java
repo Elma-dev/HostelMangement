@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/web/comment")
+@RequestMapping("/comment")
 public class CommentController {
     private CommentServiceImpl commentService;
 

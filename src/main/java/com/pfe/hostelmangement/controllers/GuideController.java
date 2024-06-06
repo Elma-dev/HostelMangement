@@ -35,5 +35,9 @@ public class GuideController {
         return new ResponseEntity<>(guideService.save(guideDto),HttpStatus.OK);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<GuideDto> findById(@PathVariable Long id){
+        return new ResponseEntity<>(guideService.findById(id),HttpStatus.OK);
+    }
 
 }

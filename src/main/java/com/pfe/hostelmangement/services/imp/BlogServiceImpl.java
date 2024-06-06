@@ -10,6 +10,7 @@ import com.pfe.hostelmangement.services.BlogService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,7 +22,20 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public BlogDto save(BlogDto blogDto) {
+        if(blogDto.getId()!=null){
+            blogRepository.findById(blogDto.getId()).ifPresent(blogEntity -> {
+                blogDto.setImage(Base64.getEncoder().encodeToString(blogEntity.getImage()));
+                blogDto.setTitle(blogEntity.getTitle());
+                blogDto.setContent(blogEntity.getContent());
+            });
+        }
+        byte[] decodedImage = null;
+        if (blogDto.getImage() != null) {
+            decodedImage = Base64.getDecoder().decode(blogDto.getImage());
+        }
+        blogDto.setImage(null);
         BlogEntity blog = ObjectMapper.map(blogDto, BlogEntity.class);
+        blog.setImage(decodedImage);
         BlogEntity blogEntity = blogRepository.save(blog);
         return ObjectMapper.map(blogEntity, BlogDto.class);
     }
@@ -29,16 +43,29 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public BlogDto findById(Long id) {
         Optional<BlogEntity> blog = blogRepository.findById(id);
-        if (!blog.isPresent()) {
-            return null;
-        }
-        return ObjectMapper.map(blog, BlogDto.class);
+        return blog.map(this::encodeAndMap).orElse(null);
     }
 
     @Override
     public List<BlogDto> findAll() {
         List<BlogEntity> blogs = blogRepository.findAll();
-        return ObjectMapper.mapAll(blogs, BlogDto.class);
+        return  blogs.stream().map(this::encodeAndMap).toList();
+    }
+
+    private BlogDto encodeAndMap(BlogEntity entity){
+        String encodedMainImage = null;
+
+        if (entity.getImage() != null) {
+            encodedMainImage = Base64.getEncoder().encodeToString(entity.getImage());
+        }
+
+
+        entity.setImage(null);
+
+        BlogDto dto = ObjectMapper.map(entity, BlogDto.class);
+        dto.setImage(encodedMainImage);
+        return dto;
+
     }
 
     @Override

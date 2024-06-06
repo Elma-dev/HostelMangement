@@ -12,9 +12,11 @@ import java.util.List;
 @Setter
 @Builder
 public class BlogDto {
-
+    private Long id;
     private String title;
     private String content;
     private UserDto user;
+
+    private String image;
     private List<CommentDto> comments;
 }

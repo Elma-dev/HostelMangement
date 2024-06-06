@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/web/blog")
+@RequestMapping("/blog")
 public class BlogController {
     private BlogServiceImpl blogService;
 
@@ -33,6 +33,10 @@ public class BlogController {
     @PutMapping("/update")
     public ResponseEntity<BlogDto> update(@RequestBody BlogDto comment){
         return new ResponseEntity<>(blogService.save(comment),HttpStatus.OK);
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<BlogDto> findById(@PathVariable Long id) {
+        return new ResponseEntity<>(blogService.findById(id), HttpStatus.OK);
     }
 
 

@@ -21,6 +21,7 @@ public class BlogEntity {
 
     private String title;
     private String content;
+    private byte[] image;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

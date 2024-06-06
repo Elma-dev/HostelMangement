@@ -4,9 +4,7 @@ services:
     image: mysql:latest
     restart: always
     environment:
-      MYSQL_DATABASE: 'hotel_management_db'
-      MYSQL_USER: 'root'
-      MYSQL_PASSWORD: 'root'
+      MYSQL_DATABASE: 'myPfe'
       MYSQL_ROOT_PASSWORD: 'root'
     ports:
       - '3306:3306'

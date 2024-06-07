@@ -23,12 +23,12 @@ public class BookingEntity {
 
     @ManyToOne
     private UserEntity user;
-    @OneToMany
+    @ManyToMany
     private List<HotelEntity> hotels;
-    @OneToMany
+    @ManyToMany
     private List<RestaurantEntity> restaurants;
-    @OneToMany
+    @ManyToMany
     private List<ActivityEntity> activities;
-    @OneToMany
+    @ManyToMany
     private List<GuideEntity> guide;
 }

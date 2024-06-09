@@ -42,6 +42,7 @@ public class WebSecurityConfig {
             .authorizeHttpRequests(ar->ar.requestMatchers("/guide/**").permitAll())
             .authorizeHttpRequests(ar->ar.requestMatchers("/hotel").permitAll())
             .authorizeHttpRequests(ar->ar.requestMatchers("/restaurant/**").permitAll())
+            .authorizeHttpRequests(ar->ar.requestMatchers("/forfait/**").permitAll())
             .authorizeHttpRequests(ar->ar.requestMatchers("/login").permitAll())
             .authorizeHttpRequests(ar->ar.anyRequest().authenticated())
 
